@@ -3,7 +3,7 @@
   const cfg = window.CAMP_CONFIG;
   const header = document.getElementById("site-header");
   const footer = document.getElementById("site-footer");
-  const path   = location.pathname.replace(/\/+$/, "") || "/index.html";
+  const path   = location.pathname.replace(/\/+$/, "") || "./index.html";
 
   const navLinks = cfg.nav.map(item => {
     const active = (item.href === path) ? 'class="active"' : '';
@@ -13,7 +13,7 @@
   header.innerHTML = `
     <nav class="nav">
       <div class="nav-inner container">
-        <a class="brand" href="/index.html">${cfg.title}</a>
+        <a class="brand" href="./index.html">${cfg.title}</a>
         <ul>${navLinks}</ul>
       </div>
     </nav>
