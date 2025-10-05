@@ -21,7 +21,7 @@
 
   footer.innerHTML = `
     <div class="container foot">
-      <div>© 2025 工科營｜地點：${cfg.locationText}｜聯絡：
+      <div>© 工程科學營28th｜地點：${cfg.locationText}｜聯絡：
         <a href="mailto:${cfg.contactEmail}">${cfg.contactEmail}</a></div>
       <div><a href="${cfg.facebookURL}" target="_blank" rel="noopener">Facebook</a></div>
     </div>

@@ -1,49 +1,440 @@
-:root{
-  --brand:#4a6fa5; --brand-dark:#2d4d7a;
-  --bg:#f7f9fc; --card:#fff; --text:#233142; --muted:#6b7c93; --accent:#ffd166;
-  --radius:16px; --shadow:0 10px 24px rgba(0,0,0,.08);
+:root {
+  --brand: #4a6fa5;
+  --brand-dark: #2d4d7a;
+  --bg: #f7f9fc;
+  --card: #fff;
+  --text: #233142;
+  --muted: #6b7c93;
+  --accent: #ffd166;
+  --radius: 16px;
+  --shadow: 0 10px 24px rgba(0, 0, 0, .08);
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:"Noto Sans TC",system-ui,Arial;background:var(--bg);color:var(--text)}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.container{max-width:1100px;margin:0 auto;padding:0 16px}
-section{padding:48px 0}
-h1,h2{margin:0 0 12px}
-.muted{color:var(--muted)}
 
-.nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);box-shadow:var(--shadow)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:10px 16px}
-.brand{color:var(--brand);font-weight:800}
-.nav ul{list-style:none;display:flex;gap:12px;margin:0;padding:0}
-.nav a{padding:8px 10px;border-radius:10px}
-.nav a.active,.nav a:hover{background:var(--brand);color:#fff}
+/* === Reset === */
+* {
+  box-sizing: border-box;
+}
 
-.hero{background:linear-gradient(135deg,#a1c4fd,#c2e9fb);padding:56px 0}
-.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.row.two{grid-template-columns:repeat(2,1fr)}
-@media(max-width:900px){.row,.row.two{grid-template-columns:1fr}}
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", system-ui, Arial;
+  background: var(--bg);
+  color: var(--text);
+}
 
-.countdowns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cd{background:#fff;border-radius:14px;text-align:center;padding:12px;box-shadow:var(--shadow)}
-.cd .t{font-size:14px;color:var(--muted)}
-.cd .v{font-weight:800;font-size:22px}
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-.btn{background:var(--brand);color:#fff;border:none;border-radius:12px;padding:12px 18px;cursor:pointer}
-.btn.secondary{background:var(--accent);color:#3a2a00}
+img {
+  max-width: 100%;
+  display: block;
+}
 
-.avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:var(--shadow)}
+/* === Layout === */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
 
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.gallery img{border-radius:12px;cursor:pointer;transition:transform .2s}
-.gallery img:hover{transform:scale(1.02)}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:1000}
-.lightbox.show{display:flex}
-.lightbox img{max-width:90vw;max-height:80vh;border-radius:12px;box-shadow:var(--shadow)}
+section {
+  padding: 48px 0;
+}
 
-.faq-item{padding:14px;border-radius:14px;background:#fff;box-shadow:var(--shadow)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-.faq-a{display:none;color:#4b5563;margin-top:8px}
+/* === Typography === */
+h1, h2 {
+  margin: 0 0 12px;
+}
 
-.foot{display:flex;justify-content:space-between;align-items:center;padding:24px 0;color:var(--muted)}
+.muted {
+  color: var(--muted);
+}
+
+/* === Navigation Bar === */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(255, 255, 255, .9);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+}
+
+.brand {
+  color: var(--brand);
+  font-weight: 800;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.nav a.active,
+.nav a:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* === Hero Section === */
+.hero {
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  padding: 56px 0;
+}
+
+/* === Card === */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+/* === Grid Layout === */
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.row.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 900px) {
+  .row,
+  .row.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Countdowns === */
+.countdowns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cd {
+  background: #fff;
+  border-radius: 14px;
+  text-align: center;
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+
+.cd .t {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.cd .v {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+/* === Button === */
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.apply-btn {
+  display: inline-block;
+  margin-top: 0.25rem;   /* ↑ 跟上面的文字距離 */
+  margin-bottom: 0.25rem;/* ↓ 跟下面的文字距離 */
+  margin-left: 1.5rem;/* → 向右移一點 */
+}
+
+.btn:hover {
+  background: var(--brand-dark);
+}
+
+/* === Avatar === */
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: var(--shadow);
+}
+
+/* === Gallery === */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.gallery img {
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* === Lightbox === */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* === FAQ === */
+.faq-item {
+  padding: 14px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  margin-bottom: .8rem;
+}
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.faq-a {
+  display: none;
+  color: #4b5563;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.icon {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--brand);
+  transition: transform .2s ease;
+}
+
+
+/* === Footer === */
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  color: var(--muted);
+}
+
+/* === Dialog bubbles (小工/小珂/小瑩對話) === */
+.talk {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  margin: .5rem 0;
+}
+.talk .who {
+  font-size: 1.25rem;   /* 表情當頭像 */
+  line-height: 1;
+  width: 1.5rem;
+  text-align: center;
+}
+.talk .bubble {
+  padding: .6rem .8rem;
+  border-radius: 12px;
+  border: 1px solid #e0e7ff;
+  background: #f5f7ff;
+  max-width: 100%;
+}
+.talk .bubble .name {
+  display: block;
+  font-size: .8rem;
+  color: var(--muted);
+  margin-bottom: .25rem;
+}
+.talk.right {
+  flex-direction: row-reverse;
+}
+.talk.right .bubble {
+  border-color: #ffe0bf;
+  background: #fff7f0;
+}
+
+/* === Tags (主題小貼紙) === */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+.tag {
+  font-size: .8rem;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3949ab;
+  border: 1px solid #e0e7ff;
+}
+.tag.orange {
+  background: #fff4e6;
+  color: #a85b00;
+  border-color: #ffe0bf;
+}
+
+/* === 錄取名單排列 === */
+.name-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: .5rem .75rem;
+  margin: 0;
+  padding: .5rem 0;
+}
+
+.name-list li {
+  background: #f7f9fc;
+  border-radius: 8px;
+  text-align: center;
+  padding: .4rem .2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column; /* 垂直排 */
+  align-items: center;
+  gap: 1rem; /* 每張圖之間留一點空 */
+  margin-top: 1rem;
+}
+
+.gallery img {
+  width: 100%;          /* 讓圖片佔滿整個區塊寬度 */
+  max-width: 900px;     /* 設個上限，避免在大螢幕太寬 */
+  border-radius: 12px;  /* 圓角（可改） */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* 陰影（可刪） */
+  object-fit: cover;    /* 讓圖不會被壓扁 */
+}
+
+
+/* === 手機版調整 (小於 768px) === */
+@media (max-width: 768px) {
+  /* 整體容器縮小內距，避免太擠 */
+  .container {
+    padding: 0 12px;
+  }
+
+  /* 導覽列改成直排 */
+  .nav-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+
+  /* 行內兩欄自動變一欄 */
+  .row.two,
+  .row {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 卡片間距調整 */
+  .card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  /* FAQ 字大一點好點 */
+  .faq-q {
+    font-size: 1.05rem;
+  }
+
+  .faq-a {
+    font-size: 0.95rem;
+  }
+
+  /* 幹部介紹中的頭像與文字堆疊顯示 */
+  .staff-profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .staff-profile img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* 倒數字體縮小一點以防爆版 */
+  .cd .v {
+    font-size: 18px;
+  }
+
+  /* 頁尾對齊改垂直 */
+  .foot {
+    flex-direction: column;
+    text-align: center;
+    gap: .5rem;
+  }
+
+  .gallery img {
+    border-radius: 8px;
+    box-shadow: none;
+  }
+}
+
+.staff-profile .avatar {
+  width: 100%;          /* 讓圖片跟容器一樣寬 */
+  height: auto;          /* 高度自動，保持比例 */
+  max-width: 800px;      /* 限制最大寬，避免在超大螢幕太誇張 */
+  display: block;
+  margin: 1rem auto;     /* 置中顯示並加一點上下距 */
+  border-radius: 12px;   /* 圓角，可改為 0 變方形 */
+  object-fit: cover;     /* 保持比例裁切（圖片超過時自動修） */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* 陰影，可拿掉 */
+}
+
+/* 手機版：略縮小 */
+@media (max-width: 768px) {
+  .staff-profile .avatar {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+}
+
