@@ -492,3 +492,36 @@ h1, h2 {
     padding: 0.2rem 0.6rem;
   }
 }
+
+/* 背景可視化層：在背景之上、內容之下 */
+#musicCanvas{
+  position: fixed;
+  inset: 0;
+  z-index: 0;         
+  pointer-events: none;
+  opacity: .8;           /* 你原來設定的透明度/動畫照舊 */
+  transition: opacity .8s ease;
+  background: radial-gradient(circle at 20% 30%, #93c5fd22, transparent 60%),
+              radial-gradient(circle at 80% 70%, #fbcfe822, transparent 60%),
+              #f8fbff;
+}
+
+/* 主要內容層：蓋在 canvas 上 */
+header, main, footer{
+  position: relative;    /* 建立堆疊脈絡 */
+  z-index: 1;
+  background: transparent;  /* 讓 canvas 能透出外圍，卡片仍可維持白底 */
+}
+
+/* 卡片維持白色，內容可讀性不受影響 */
+.card{ background:#fff; }
+
+body.memories main.container > .card:first-child {
+  margin-top: 48px;  /* 自然留一段距離 */
+}
+
+@media (max-width: 768px) {
+  body.memories main.container > .card:first-child {
+    margin-top: 32px;
+  }
+}
