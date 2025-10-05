@@ -11,23 +11,37 @@
 
   <main class="container">
     <section class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <h1 style="margin:0">回憶牆</h1>
         <button class="btn" id="musicBtn">🎵 播放音樂</button>
-        <audio id="bgm" src="./assets/audio/escamp28_music.MP3" preload="auto"></audio>
-      </div>
+        <audio id="bgm" src="./assets/audio/escamp28_music.MP3" preload="auto" playsinline></audio>
+    </div>
 
-      <!-- 想新增照片就多貼一行 <img>，JS 會自動賦予燈箱功能 -->
-      <div id="gallery" class="gallery">
-        <img src="./assets/img/escamp28_p1.JPG" alt="活動1">
+    <!-- 單張輪播區 -->
+    <div id="slideshow" class="slideshow">
+        <img src="./assets/img/escamp28_p1.JPG" alt="活動1" class="active">
         <img src="./assets/img/escamp28_p2.JPG" alt="活動2">
         <img src="./assets/img/escamp28_p3.JPG" alt="活動3">
-      </div>
-    </section>
-  </main>
+        <img src="./assets/img/escamp28_p4.JPG" alt="活動4">
+        <img src="./assets/img/escamp28_p5.JPG" alt="活動5">
+        <img src="./assets/img/escamp28_p6.JPG" alt="活動6">
+        <img src="./assets/img/escamp28_p7.JPG" alt="活動7">
+        <img src="./assets/img/escamp28_p8.JPG" alt="活動8">
+        <img src="./assets/img/escamp28_p9.JPG" alt="活動9">
+        <img src="./assets/img/escamp28_p10.JPG" alt="活動10">
+        <img src="./assets/img/escamp28_p11.JPG" alt="活動11">
+        <img src="./assets/img/escamp28_p12.JPG" alt="活動12">
+        <img src="./assets/img/escamp28_p13.JPG" alt="活動13">
 
-  <!-- 燈箱 -->
-  <div id="lightbox" class="lightbox"><img id="lightboxImg" alt=""></div>
+        <!-- 手動切換按鈕 -->
+        <button class="prev">⟨</button>
+        <button class="next">⟩</button>
+    </div>
+    </section>
+
+    <!-- 燈箱（可留可刪） -->
+    <div id="lightbox" class="lightbox"><img id="lightboxImg" alt=""></div>
+
 
   <footer id="site-footer"></footer>
 

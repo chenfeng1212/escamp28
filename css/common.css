@@ -438,3 +438,57 @@ h1, h2 {
   }
 }
 
+.slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.slideshow img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slideshow img.active {
+  opacity: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* 上一張 / 下一張按鈕 */
+.slideshow button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+.slideshow button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.slideshow button.prev { left: 10px; }
+.slideshow button.next { right: 10px; }
+
+/* 手機版調整 */
+@media (max-width: 768px) {
+  .slideshow button {
+    font-size: 1.6rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
