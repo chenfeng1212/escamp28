@@ -1,9 +1,9 @@
-// 動態注入共用導覽列/頁尾，避免每頁複製貼上
-(function(){
+// 動態注入共用導覽列/頁尾
+(function () {
   const cfg = window.CAMP_CONFIG;
   const header = document.getElementById("site-header");
-  const footer = document.getElementById("site-footer");
-  const path   = location.pathname.replace(/\/+$/, "") || "./index.html";
+  const footer  = document.getElementById("site-footer");
+  const path    = location.pathname.replace(/\/+$/, "") || "./index.html";
 
   const navLinks = cfg.nav.map(item => {
     const active = (item.href === path) ? 'class="active"' : '';
@@ -12,9 +12,19 @@
 
   header.innerHTML = `
     <nav class="nav">
-      <div class="nav-inner container">
-        <a class="brand" href="./index.html">${cfg.title}</a>
-        <ul>${navLinks}</ul>
+      <div class="container">
+        <!-- 第一列：品牌（不可點） -->
+        <div class="brand-row">
+          <div class="brand" id="siteBrand" role="heading" aria-level="1">
+            ${cfg.title}
+          </div>
+        </div>
+        <!-- 第二列：導覽 -->
+        <div class="menu-row">
+          <ul class="menu">
+            ${navLinks}
+          </ul>
+        </div>
       </div>
     </nav>
   `;
