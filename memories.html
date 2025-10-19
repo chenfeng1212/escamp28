@@ -4,8 +4,16 @@
   <meta charset="utf-8"/>
   <title>回憶牆｜工科營</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- 站台樣式 -->
   <link rel="stylesheet" href="./css/common.css"/>
+
+  <!-- Favicon（注意大小寫要和檔名一致） -->
   <link rel="icon" type="image/png" href="./assets/img/icon.PNG">
+
+  <!-- 🔥 預先載入首張照片與音樂，縮短首屏等待 -->
+  <link rel="preload" as="image" href="./assets/img/escamp28_p1.JPG">
+  <link rel="preload" as="audio" href="./assets/audio/escamp28_music.MP3">
 </head>
 <body class="memories">
   <canvas id="musicCanvas"></canvas>
@@ -13,42 +21,110 @@
 
   <main class="container">
     <section class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
         <h1 style="margin:0">回憶牆</h1>
         <button class="btn" id="musicBtn">🎵 播放音樂</button>
-        <audio id="bgm" src="./assets/audio/escamp28_music.MP3" preload="auto" playsinline></audio>
-    </div>
+        <!-- ✅ 用 metadata 暖機；playsinline 防行動裝置強制全螢幕 -->
+        <audio id="bgm" src="./assets/audio/escamp28_music.MP3" preload="metadata" playsinline></audio>
+      </div>
 
-    <!-- 單張輪播區 -->
-    <div id="slideshow" class="slideshow">
-        <img src="./assets/img/escamp28_p1.JPG" alt="活動1" class="active">
-        <img src="./assets/img/escamp28_p2.JPG" alt="活動2">
-        <img src="./assets/img/escamp28_p3.JPG" alt="活動3">
-        <img src="./assets/img/escamp28_p4.JPG" alt="活動4">
-        <img src="./assets/img/escamp28_p5.JPG" alt="活動5">
-        <img src="./assets/img/escamp28_p6.JPG" alt="活動6">
-        <img src="./assets/img/escamp28_p7.JPG" alt="活動7">
-        <img src="./assets/img/escamp28_p8.JPG" alt="活動8">
-        <img src="./assets/img/escamp28_p9.JPG" alt="活動9">
-        <img src="./assets/img/escamp28_p10.JPG" alt="活動10">
-        <img src="./assets/img/escamp28_p11.JPG" alt="活動11">
-        <img src="./assets/img/escamp28_p12.JPG" alt="活動12">
-        <img src="./assets/img/escamp28_p13.JPG" alt="活動13">
+      <!-- 單張輪播區 -->
+      <div id="slideshow" class="slideshow">
+        <!-- 第一張 -->
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p1.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p1.webp">
+          <img src="./assets/img/escamp28_p1.JPG" alt="活動1" class="active" loading="eager" decoding="async">
+        </picture>
+
+        <!-- 其餘圖片（lazy 載入） -->
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p2.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p2.webp">
+          <img src="./assets/img/escamp28_p2.JPG" alt="活動2" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p3.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p3.webp">
+          <img src="./assets/img/escamp28_p3.JPG" alt="活動3" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p4.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p4.webp">
+          <img src="./assets/img/escamp28_p4.JPG" alt="活動4" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p5.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p5.webp">
+          <img src="./assets/img/escamp28_p5.JPG" alt="活動5" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p6.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p6.webp">
+          <img src="./assets/img/escamp28_p6.JPG" alt="活動6" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p7.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p7.webp">
+          <img src="./assets/img/escamp28_p7.JPG" alt="活動7" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p8.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p8.webp">
+          <img src="./assets/img/escamp28_p8.JPG" alt="活動8" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p9.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p9.webp">
+          <img src="./assets/img/escamp28_p9.JPG" alt="活動9" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p10.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p10.webp">
+          <img src="./assets/img/escamp28_p10.JPG" alt="活動10" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p11.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p11.webp">
+          <img src="./assets/img/escamp28_p11.JPG" alt="活動11" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p12.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p12.webp">
+          <img src="./assets/img/escamp28_p12.JPG" alt="活動12" loading="lazy" decoding="async">
+        </picture>
+
+        <picture>
+          <source type="image/avif" srcset="./assets/img/escamp28_p13.avif">
+          <source type="image/webp" srcset="./assets/img/escamp28_p13.webp">
+          <img src="./assets/img/escamp28_p13.JPG" alt="活動13" loading="lazy" decoding="async">
+        </picture>
 
         <!-- 手動切換按鈕 -->
         <button class="prev">⟨</button>
         <button class="next">⟩</button>
-    </div>
+      </div>
     </section>
+  </main>
 
-    <!-- 燈箱（可留可刪） -->
-    <div id="lightbox" class="lightbox"><img id="lightboxImg" alt=""></div>
-
+  <!-- 燈箱（可留可刪） -->
+  <div id="lightbox" class="lightbox"><img id="lightboxImg" alt=""></div>
 
   <footer id="site-footer"></footer>
 
-  <script src="./js/config.js"></script>
-  <script src="./js/layout.js"></script>
-  <script src="./js/memories.js"></script>
+  <!-- ✅ 用 defer，避免阻塞首屏 -->
+  <script src="./js/config.js" defer></script>
+  <script src="./js/layout.js" defer></script>
+  <script src="./js/memories.js" defer></script>
 </body>
 </html>

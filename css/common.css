@@ -611,3 +611,49 @@ body.memories main.container > .card:first-child {
   .brand { font-size: clamp(24px, 6vw, 34px); }
   .menu { gap: 16px; }
 }
+
+/* ===== 回憶牆：淡入樣式 ===== */
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  background: #f7fafc;            /* 首屏先有柔和底色，避免白屏 */
+  min-height: 320px;               /* 保留空間，避免版面跳動 */
+}
+
+.slideshow picture,
+.slideshow img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 所有圖片預設透明；只讓「active + 已載入」的顯示 */
+.slideshow img {
+  opacity: 0;
+  transition: opacity .6s ease;
+  will-change: opacity;
+}
+
+/* 只有當這張是 active，且已經載入（JS 會加 .is-loaded）才顯示 */
+.slideshow img.active.is-loaded {
+  opacity: 1;
+}
+
+/* 手動切換按鈕小優化（可留可省） */
+.slideshow .prev,
+.slideshow .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.slideshow .prev { left: 8px; }
+.slideshow .next { right: 8px; }
+.slideshow .prev:hover,
+.slideshow .next:hover { background: rgba(0,0,0,.5); transform: translateY(-50%) scale(1.04); }
