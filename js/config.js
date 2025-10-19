@@ -4,7 +4,7 @@ window.CAMP_CONFIG = {
   campStartISO: "2026-02-09T13:00:00+08:00",    // 營隊開始
   applyDeadlineISO: "2025-12-14T23:59:59+08:00", // 報名截止
   applyFormEmbedURL: "https://docs.google.com/forms/d/e/1FAIpQLSdMIA0sC4FyTTAY8_pyleklkNp_3fmtgVZaXmLs6zedUluJJQ/closedform", // 換成你的內嵌URL
-  facebookURL: "https://www.facebook.com/ESCamp27",
+  facebookURL: "https://www.facebook.com/ESCamp28",
   contactEmail: "escamp028@gmail.com",
   locationText: "國立成功大學",
   nav: [
