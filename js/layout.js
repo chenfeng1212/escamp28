@@ -1,13 +1,21 @@
 // 動態注入共用導覽列/頁尾
 (function () {
-  const cfg = window.CAMP_CONFIG;
+  const cfg    = window.CAMP_CONFIG;
   const header = document.getElementById("site-header");
-  const footer  = document.getElementById("site-footer");
-  const path    = location.pathname.replace(/\/+$/, "") || "./index.html";
+  const footer = document.getElementById("site-footer");
 
+  // 取得目前頁面檔名（預設 index.html）
+  const currentPath = (() => {
+    const p = location.pathname.replace(/\/+$/, "");
+    const last = p.split("/").pop();
+    return last || "index.html";
+  })();
+
+  // 導覽連結
   const navLinks = cfg.nav.map(item => {
-    const active = (item.href === path) ? 'class="active"' : '';
-    return `<li><a ${active} href="${item.href}">${item.text}</a></li>`;
+    const isActive = (item.href.endsWith(currentPath));
+    const active   = isActive ? 'class="active"' : '';
+    return `<li><a ${active} href="${item.href}"><span>${item.text}</span></a></li>`;
   }).join("");
 
   header.innerHTML = `
@@ -16,7 +24,8 @@
         <!-- 第一列：品牌（不可點） -->
         <div class="brand-row">
           <div class="brand" id="siteBrand" role="heading" aria-level="1">
-            ${cfg.title}
+            <img src="./assets/img/icon.PNG" alt="ESC28 Logo" />
+            <span>${cfg.title}</span>
           </div>
         </div>
         <!-- 第二列：導覽 -->
