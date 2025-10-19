@@ -582,7 +582,7 @@ body.memories main .slideshow {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;        /* 置中裁切，畫面更好看；若不想裁切可改成 contain */
+    object-fit: contain;       /* 置中裁切，畫面更好看；若不想裁切可改成 contain */
     object-position: center;  /* 圖片在舞台中央 */
     opacity: 0;
     visibility: hidden;
