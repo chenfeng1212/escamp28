@@ -1,9 +1,9 @@
-// 只要改這支，就能更新首頁的倒數、表單、FB、聯絡資訊
+
 window.CAMP_CONFIG = {
   title: "第28屆工程科學營",
-  campStartISO: "2026-02-09T13:00:00+08:00",    // 營隊開始
-  applyDeadlineISO: "2025-12-14T23:59:59+08:00", // 報名截止
-  applyFormEmbedURL: "https://forms.gle/uqSboLAzN2wxKiBq9", // 換成你的內嵌URL
+  campStartISO: "2026-02-09T13:00:00+08:00",    
+  applyDeadlineISO: "2025-12-14T23:59:59+08:00", 
+  applyFormEmbedURL: "https://forms.gle/uqSboLAzN2wxKiBq9", 
   facebookURL: "https://www.facebook.com/ESCamp28",
   contactEmail: "escamp028@gmail.com",
   locationText: "國立成功大學",

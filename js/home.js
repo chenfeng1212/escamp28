@@ -1,4 +1,4 @@
-// 首頁：雙倒數 + FAQ 展開 + 表單/FB/聯絡資訊注入
+// 首頁：雙倒數 + FAQ 展開 + 表單/FB/聯絡資訊
 (function () {
   const cfg = window.CAMP_CONFIG;
 
