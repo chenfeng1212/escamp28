@@ -16,10 +16,8 @@
 
   // --- 雙倒數 ---
   const $camp = document.getElementById("countCamp");
-  const $dl = document.getElementById("countDeadline");
   if ($camp) {
     const campStart = new Date(cfg.campStartISO);
-    const deadline = new Date(cfg.applyDeadlineISO);
     const pad = (n) => String(n).padStart(2, "0");
     function fmt(target) {
       const now = new Date();
@@ -35,7 +33,6 @@
     }
     function tick() {
       $camp.textContent = fmt(campStart);
-      $dl.textContent = fmt(deadline);
     }
     tick();
     setInterval(tick, 1000);
