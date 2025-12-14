@@ -2,7 +2,6 @@
 window.CAMP_CONFIG = {
   title: "第28屆工程科學營",
   campStartISO: "2026-02-09T13:00:00+08:00",    
-  applyDeadlineISO: "2025-12-14T23:59:59+08:00", 
   applyFormEmbedURL: "https://forms.gle/uqSboLAzN2wxKiBq9", 
   facebookURL: "https://www.facebook.com/ESCamp28",
   contactEmail: "escamp028@gmail.com",
