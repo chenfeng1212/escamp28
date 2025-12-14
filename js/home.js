@@ -17,7 +17,7 @@
   // --- 雙倒數 ---
   const $camp = document.getElementById("countCamp");
   const $dl = document.getElementById("countDeadline");
-  if ($camp && $dl) {
+  if ($camp) {
     const campStart = new Date(cfg.campStartISO);
     const deadline = new Date(cfg.applyDeadlineISO);
     const pad = (n) => String(n).padStart(2, "0");
