@@ -1,7 +1,7 @@
 # 第28屆 成大工程科學營（ESC28）官網
 
 這是第 28 屆工科營的網站。
-網站只用 HTML、CSS、JavaScript 寫成，**不需要安裝任何東西**，用瀏覽器打開 `index.html` 就能看。
+網站只用 HTML、CSS、JavaScript 寫成，**不需要安裝任何東西**，用瀏覽器打開 `https://chenfeng1212.github.io/escamp28` 就能看。
 
 ---
 
