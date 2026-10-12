@@ -1,0 +1,16 @@
+
+window.CAMP_CONFIG = {
+  title: "第28屆工程科學營",
+  campStartISO: "2026-02-09T13:00:00+08:00",    
+  applyFormEmbedURL: "https://forms.gle/uqSboLAzN2wxKiBq9", 
+  facebookURL: "https://www.facebook.com/ESCamp28",
+  contactEmail: "escamp028@gmail.com",
+  locationText: "國立成功大學",
+  nav: [
+    { href: "./index.html",       text: "首頁" },
+    { href: "./about.html",       text: "關於我們" },
+    { href: "./staff.html",       text: "幹部介紹" },
+    { href: "./admissions.html",  text: "名單與行前通知" },
+    { href: "./memories.html",    text: "回憶牆" }
+  ]
+};

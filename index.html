@@ -1,111 +1,160 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>首頁｜第28屆工程科學營</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="./css/common.css"/>
-  <link rel="icon" type="image/png" href="./assets/img/icon.PNG">
+  <meta name="description" content="第28屆成大工程科學營（ESC28）：結合電機、資訊、機械的五天四夜跨域整合營隊。">
+  <meta name="theme-color" content="#FFF9DC">
+  <link rel="icon" type="image/png" href="./assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap">
+  <link rel="stylesheet" href="./css/common.css">
 </head>
 <body>
   <header id="site-header"></header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <div class="container">
-        <h1 id="siteTitle">工科營</h1>
-        <p class="muted">
-          我們是第28屆 ESC 成大工科營，結合電機 & 資訊 & 機械的整合性營隊，
-          絕對在這五天四夜的活動中讓你印象深刻！加入我們！讓你的寒假不再無聊！
-        </p>
-
-        <div class="countdowns" style="margin-top:12px">
-          <div class="cd"><div class="t">距離營隊開始</div><div class="v" id="countCamp">--</div></div>
-          <div class="cd"><div class="t">距離報名截止</div><div class="v" >報名已截止!!!</div></div>
-        </div>
-
-        <div class="card" style="margin-top:16px">
-          <h2 style="margin-top:0">報名資訊</h2>
-
-          <p>⏱️ <strong>報名期限：</strong> 即日起至 <strong>12/14（日）23:59</strong></p>
-
-          <div class="mt-1">
-            <h3 style="margin:0 0 .25rem 0">📍 報名方案</h3>
-            <ul class="mt-1">
-              <li>💰 個人報名 <strong>$6,500 / 人</strong></li>
-              <li>💰 3 人以上(含)團報優惠 <strong>$6,300 / 人</strong></li>
-            </ul>
+        <div class="comic">
+          <div class="panel hero-poster rise">
+            <img src="./assets/img/poster-1000.webp" width="849" height="1400"
+                 alt="第28屆成大工科營主視覺海報：ES Camp、ESC28、成大工科營">
           </div>
 
-          <div class="mt-1">
-            <p>📋 <strong>報名方式：</strong></p>
-            <p class="mt-1">
-              <a class="btn apply-btn" href="https://forms.gle/uqSboLAzN2wxKiBq9" target="_blank" rel="noopener">
-                立即前往報名表單
-              </a>
+          <div class="panel hero-title tex-plaid rise d1">
+            <p class="kicker">NCKU · Engineering Science Camp</p>
+            <h1>
+              <span class="gen">第 28 屆</span>
+              <span class="main">成大<em>工科營</em></span>
+            </h1>
+            <p class="lead">
+              我們是第28屆 ESC 成大工科營，結合電機 &amp; 資訊 &amp; 機械的整合性營隊，
+              絕對在這五天四夜的活動中讓你印象深刻！加入我們！讓你的寒假不再無聊！
             </p>
+            <div class="actions">
+              <a class="btn" href="./memories.html">看回憶牆 <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn btn--ghost" href="./staff.html">認識幹部</a>
+            </div>
           </div>
 
-          <p class="mt-1">📣 <strong>錄取名單公佈：</strong> 之後會陸續公布在粉絲團與這裡，請大家持續關注我們</p>
-          <p class="mt-1">🗓️ <strong>營隊日期：</strong> 2/9（一）～ 2/13（五）</p>
+          <div class="panel panel--ink hero-status rise d2">
+            <div>
+              <p class="kicker">Status</p>
+              <p class="state" id="campState" aria-live="polite">圓滿落幕<small>謝謝每一位參與的你</small></p>
+            </div>
+            <p class="dates">
+              <b>2026.02.09 — 02.13</b>
+              週一至週五・國立成功大學
+            </p>
+            <div class="next-camp" id="nextCamp" hidden>
+              <p class="nc-label"><span class="nc-name" id="nextName">第29屆</span>倒數 <span class="nc-est">預計 <span id="nextDate"></span> 開始</span></p>
+              <p class="nc-count" id="nextCount" aria-live="off">--</p>
+            </div>
+          </div>
 
-          <hr style="margin:1rem 0; opacity:.2;">
+          <div class="panel hero-facts tex-dots-yellow rise d3">
+            <div class="fact"><b>5<small>天</small>4<small>夜</small></b><span>營期</span></div>
+            <div class="fact"><b>107<small>位</small></b><span>最終錄取學員</span></div>
+            <div class="fact"><b>3<small>大</small></b><span>電機・資訊・機械</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <p class="mt-1">
-            👀 有任何問題歡迎私訊粉專或聯絡總召 <strong>周士勛</strong>
-            📞 <a href="tel:0910357652">0910357652</a>
-            📪 <a href="mailto:escamp028@gmail.com">escamp028@gmail.com</a>
-          </p>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="label-bar"><span class="no">01</span>招生資訊</h2>
+          <span class="stamp">有早鳥優惠喔~</span>
         </div>
 
-        <!-- Q&A -->
-        <div class="card" style="margin-top:16px">
-          <h2 style="margin-top:0">Q&A</h2>
-
-          <div id="faqList" class="row two">
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q1：營隊有提供住宿嗎？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">A：有喔！會提供成大宿舍</div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q2：6500 包含哪些費用？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">A：整個營期的三餐、宿舍、保險、教材</div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q3：營期間學校開學了怎麼辦？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">A：會提供參與證明，方便請假</div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q4：如何知道有沒有錄取？如何繳費？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">
-                A：錄取後會發送 mail 通知，裡面有詳細繳費說明；<br>
-                也會在粉專和網頁上公布第一階段錄取名單
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q5：需要自備電腦嗎？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">A：不用</div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q6：早鳥優惠可以和團報優惠一起用嗎？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">A：不行喔！優惠只能擇一</div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q7：可以提供完整營隊行程嗎？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">A：為保持營期間活動驚喜感，無法提供</div>
-            </div>
-
-            <div class="faq-item">
-              <div class="faq-q"><strong>Q8：營隊有年齡限制嗎？</strong><span class="icon">＋</span></div>
-              <div class="faq-a">A：一般是高一～高三的同學<br>國中的同學大概了解情況後會考慮是否招收</div>
-            </div>
+        <div class="comic enroll">
+          <div class="panel">
+            <p class="kicker panel-kicker">報名方案</p>
+            <ul class="price-list">
+              <li class="early">
+                <span class="who">早鳥報名<small>11/16（日）23:59 前報名</small></span>
+                <span class="amt">$6,000<small>/ 人</small></span>
+              </li>
+              <li>
+                <span class="who">個人報名</span>
+                <span class="amt">$6,500<small>/ 人</small></span>
+              </li>
+              <li>
+                <span class="who">團體報名<small>3 人以上（含）</small></span>
+                <span class="amt">$6,300<small>/ 人</small></span>
+              </li>
+            </ul>
+            <p class="price-note"><b>費用包含：</b>整個營期的三餐、宿舍、保險、教材。優惠只能擇一使用。</p>
           </div>
+
+          <div class="panel">
+            <p class="kicker panel-kicker">報名資訊</p>
+            <dl class="info-dl">
+              <dt>報名期限</dt>
+              <dd>即日起至 <strong>12/14（日）23:59</strong></dd>
+              <dt>營隊日期</dt>
+              <dd>2/9（一）～ 2/13（五）</dd>
+              <dt>錄取公布</dt>
+              <dd>陸續公布在粉絲團與<a class="link" href="./admissions.html">名單頁</a>，並以 email 通知</dd>
+              <dt>報名方式</dt>
+              <dd><a class="link" href="https://forms.gle/uqSboLAzN2wxKiBq9" target="_blank" rel="noopener">Google 報名表單</a></dd>
+              <dt>聯絡總召</dt>
+              <dd>
+                周士勛・<a class="link" href="tel:0910357652">0910-357-652</a><br>
+                <a class="link" href="mailto:escamp028@gmail.com">escamp028@gmail.com</a>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Q&A ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="label-bar"><span class="no">02</span>Q&amp;A</h2>
+          <span class="stamp">點問題展開答案</span>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary><span class="qn">Q1</span>營隊有提供住宿嗎？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">有喔！會提供成大宿舍。</p>
+          </details>
+          <details>
+            <summary><span class="qn">Q2</span>6500 包含哪些費用？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">整個營期的三餐、宿舍、保險、教材。</p>
+          </details>
+          <details>
+            <summary><span class="qn">Q3</span>營期間學校開學了怎麼辦？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">會提供參與證明，方便請假。</p>
+          </details>
+          <details>
+            <summary><span class="qn">Q4</span>如何知道有沒有錄取？如何繳費？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">錄取後會發送 mail 通知，裡面有詳細繳費說明；也會在粉專和網頁上公布第一階段錄取名單。</p>
+          </details>
+          <details>
+            <summary><span class="qn">Q5</span>需要自備電腦嗎？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">不用。</p>
+          </details>
+          <details>
+            <summary><span class="qn">Q6</span>早鳥優惠可以和團報優惠一起用嗎？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">不行喔！優惠只能擇一。</p>
+          </details>
+          <details>
+            <summary><span class="qn">Q7</span>可以提供完整營隊行程嗎？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">為保持營期間活動驚喜感，無法提供。</p>
+          </details>
+          <details>
+            <summary><span class="qn">Q8</span>營隊有年齡限制嗎？<span class="pm" aria-hidden="true"></span></summary>
+            <p class="ans">一般是高一～高三的同學；國中的同學大概了解情況後會考慮是否招收。</p>
+          </details>
         </div>
       </div>
     </section>

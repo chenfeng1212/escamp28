@@ -1,69 +1,57 @@
-// 首頁：雙倒數 + FAQ 展開 + 表單/FB/聯絡資訊
+// =========================================================
+// 首頁：狀態格會依 config.js 的時間自動切換
+//   報名截止前 → 「報名中」＋ 截止倒數
+//   截止後、開營前 → 「倒數開營」
+//   營期中 → 「營隊進行中」
+//   結束後 → 「圓滿落幕」
+// =========================================================
 (function () {
   const cfg = window.CAMP_CONFIG;
+  const $state = document.getElementById("campState");
+  if (!$state) return;
 
-  // --- 基本資訊 ---
-  const siteTitle = document.getElementById("siteTitle");
-  const fbLink = document.getElementById("fbLink");
-  const applyForm = document.getElementById("applyForm");
-  const contactInfo = document.getElementById("contactInfo");
+  const reg   = new Date(cfg.regDeadlineISO);
+  const start = new Date(cfg.campStartISO);
+  const end   = new Date(cfg.campEndISO);
+  const pad = n => String(n).padStart(2, "0");
 
-  if (siteTitle) siteTitle.textContent = cfg.title;
-  if (fbLink) fbLink.href = cfg.facebookURL;
-  if (applyForm) applyForm.src = cfg.applyFormEmbedURL;
-  if (contactInfo)
-    contactInfo.textContent = `Email：${cfg.contactEmail}｜地點：${cfg.locationText}`;
-
-  // --- 雙倒數 ---
-  const $camp = document.getElementById("countCamp");
-  if ($camp) {
-    const campStart = new Date(cfg.campStartISO);
-    const pad = (n) => String(n).padStart(2, "0");
-    function fmt(target) {
-      const now = new Date();
-      let diff = Math.max(0, target - now);
-      const d = Math.floor(diff / 86400000);
-      diff -= d * 86400000;
-      const h = Math.floor(diff / 3600000);
-      diff -= h * 3600000;
-      const m = Math.floor(diff / 60000);
-      diff -= m * 60000;
-      const s = Math.floor(diff / 1000);
-      return `${d}天 ${pad(h)}:${pad(m)}:${pad(s)}`;
-    }
-    function tick() {
-      $camp.textContent = fmt(campStart);
-    }
-    tick();
-    setInterval(tick, 1000);
+  function countdown(target) {
+    let s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    const d = Math.floor(s / 86400); s -= d * 86400;
+    const h = Math.floor(s / 3600);  s -= h * 3600;
+    const m = Math.floor(s / 60);    s -= m * 60;
+    return `${d}<small>天 ${pad(h)}:${pad(m)}:${pad(s)}</small>`;
   }
 
-  // --- FAQ 展開 ---
-  function initFAQ() {
-    const faqRoot = document.getElementById("faqList");
-    if (!faqRoot) return; // 其他頁面沒有 FAQ 就直接略過
-
-    faqRoot.querySelectorAll(".faq-item").forEach((div) => {
-      const q = div.querySelector(".faq-q");
-      const a = div.querySelector(".faq-a");
-      const icon = q?.querySelector(".icon, span");
-      if (!q || !a) return;
-      a.style.display = "none";
-
-      q.addEventListener("click", () => {
-        const open = a.style.display === "block";
-        a.style.display = open ? "none" : "block";
-        if (icon) icon.textContent = open ? "＋" : "－";
-      });
-    });
-
-    console.log("FAQ 展開初始化完成");
+  let timer = null;
+  function render() {
+    const now = Date.now();
+    let html;
+    if (now < reg)        html = `報名中<small>截止倒數 ${countdown(reg).replace(/<\/?small>/g, " ")}</small>`;
+    else if (now < start) html = `${countdown(start)}<small>距離開營</small>`;
+    else if (now < end)   html = `營隊進行中<small>大家加油！</small>`;
+    else { html = `圓滿落幕<small>謝謝每一位參與的你</small>`; clearInterval(timer); }
+    $state.innerHTML = html;
   }
+  render();
+  if (Date.now() < end) timer = setInterval(render, 1000);
 
-  // 若 DOM 已載入就直接執行，否則等待
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initFAQ);
-  } else {
-    initFAQ();
+  // ---- 下一屆倒數（本屆結束後才顯示） ----
+  const next = cfg.nextCamp;
+  const $box = document.getElementById("nextCamp");
+  if (next && next.startISO && $box && Date.now() >= end) {
+    const nextStart = new Date(next.startISO);
+    const d = nextStart;
+    document.getElementById("nextName").textContent = next.name;
+    document.getElementById("nextDate").textContent =
+      `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
+    const $count = document.getElementById("nextCount");
+    const tickNext = () => {
+      if (Date.now() >= nextStart) { $count.textContent = "營隊開始囉！"; return; }
+      $count.innerHTML = countdown(nextStart).replace("<small>天 ", "<small>天</small> ").replace(/<\/small>$/, "") ;
+    };
+    tickNext();
+    setInterval(tickNext, 1000);
+    $box.hidden = false;
   }
 })();

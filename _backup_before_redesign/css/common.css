@@ -1,0 +1,613 @@
+/* === ESC28 Warm Yellow Theme === */
+:root {
+  --brand:       #C88E00;  /* 主色：琥珀黃 */
+  --brand-dark:  #8B5E00;  /* 深一階：焦糖 */
+  --bg:          #F6F1DC;  /* 奶油米白（整體底色） */
+  --card:        #FFF9E8;  /* 卡片淡奶油 */
+  --text:        #2E2411;  /* 深咖文字 */
+  --muted:       #7A6B4F;  /* 次要文字（咖拿鐵） */
+  --accent:      #E0A600;  /* 點綴黃 */
+  --radius:      16px;
+  --shadow:      0 10px 24px rgba(46, 36, 17, .08);
+}
+
+/* === Reset === */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", system-ui, Arial;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* === Layout === */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+section { padding: 48px 0; }
+
+/* === Typography === */
+h1, h2 { margin: 0 0 12px; }
+.muted { color: var(--muted); }
+
+/* === Navigation Bar === */
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+}
+/* ===== Nav 尺寸與對齊微調 ===== */
+.nav { position: sticky; top: 0; z-index: 100; }
+
+.nav .container{
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 1.5rem;       /* 整體左右內距 */
+}
+
+/* 第一列：品牌（加厚） */
+.brand-row{
+  display:flex; align-items:center;
+  gap:.65rem;
+  padding: .9rem 0 .55rem;       /* ↑ 這裡調厚度 */
+  min-height: 56px;
+}
+
+/* 左上角小 logo 與字體大小 */
+.brand{
+  display:flex; align-items:center; gap:.6rem;
+  font-weight:900; letter-spacing:.02em;
+  font-size: clamp(26px, 2.2vw + 14px, 38px);
+  line-height:1.1;
+  pointer-events:none; user-select:none; /* 禁互動 */
+}
+.brand img{
+  height: 34px;                  /* Logo 放大一點 */
+  width: auto;
+  display:block;
+}
+
+/* 第二列：導覽列靠右 & 加上下間距 */
+.menu-row{
+  display:flex; align-items:center;
+  justify-content:flex-end;      /* ✅ 右對齊 */
+  border-top:1px solid rgba(0,0,0,.06);
+  padding: .7rem 0;              /* ✅ 加厚上下 */
+}
+.menu{ margin-left:auto; display:flex; gap:28px; list-style:none; padding:0; }
+.menu a{ padding:.4rem .35rem; border-radius:6px; font-weight:600; }
+.menu a:hover span{ filter: drop-shadow(0 0 8px rgba(251,191,36,.55)); }
+
+/* 桌機：第一行整體更厚一點 */
+@media (min-width: 1024px){
+  .brand-row{ padding: 1.0rem 0 .65rem; min-height: 62px; }
+}
+
+/* --- 導覽選單 --- */
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  padding: 8px 14px;
+  border-radius: 8px;
+  position: relative;
+  font-weight: 600;
+  color: #3B2A12;
+  transition: all 0.25s ease;
+}
+
+/* 柔光 hover 效果 */
+.nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #FFF3C7 40%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 8px;
+  z-index: 0;
+}
+.nav a:hover::before { opacity: 1; }
+.nav a:hover { color: var(--brand); }
+.nav a.active { background: #FFF3C7; color: var(--brand-dark); }
+
+.nav a > span { position: relative; z-index: 1; }
+
+/* === Hero Section === */
+.hero {
+  background: linear-gradient(135deg, #FFF6D8 0%, #FFEAA8 60%, #F6F1DC 100%);
+  padding: 56px 0;
+}
+
+/* === Card === */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  border: 1px solid rgba(139,94,0,.08);
+}
+
+/* === Button === */
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .25s;
+}
+.btn:hover { background: var(--brand-dark); }
+
+/* === Gallery === */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.gallery img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+/* === Footer === */
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  color: var(--muted);
+}
+
+/* === Q&A Section === */
+#faqList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 每列兩欄 */
+  gap: 14px 18px;                        /* 卡片間距 */
+  margin-top: 12px;
+}
+
+.faq-item {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: #f8f1db;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .1);
+}
+
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+.faq-a {
+  display: none;
+  color: #4b5563;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+/* 小螢幕時自動變一欄 */
+@media (max-width: 768px) {
+  #faqList {
+    grid-template-columns: 1fr;
+  }
+}
+
+.icon { color: var(--brand); }
+
+/* === 回憶牆 Slideshow === */
+.slideshow {
+  position: relative;
+  overflow: hidden;
+  background: #FFF9E8;
+  min-height: 320px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+.slideshow img.active.is-loaded {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  z-index: 1;
+}
+.slideshow button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(46,36,17,0.4);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s;
+}
+.slideshow button:hover {
+  background: rgba(46,36,17,0.7);
+}
+.slideshow button.prev { left: 10px; }
+.slideshow button.next { right: 10px; }
+
+/* === 粒子背景（暖黃） === */
+#musicCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .85;
+  transition: opacity .8s ease;
+  background:
+    radial-gradient(circle at 20% 30%, #FAD66E22, transparent 60%),
+    radial-gradient(circle at 80% 70%, #E9C46A22, transparent 60%),
+    #F6F1DC;
+}
+header, main, footer {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* === 手機版 === */
+@media (max-width: 768px) {
+  .nav-inner { flex-direction: column; gap: .5rem; }
+  .nav ul { flex-wrap: wrap; justify-content: center; }
+  .brand img { height: 34px; width: 34px; }
+  .btn { font-size: 14px; }
+}
+
+/* 錄取名單：每列 3~5 個，卡片感與間距 */
+.name-list{
+  list-style:none;
+  display:grid;
+  /* 120~180px 之間自動排，桌機會出現 4~5 欄，平板 3~4 欄 */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: .75rem .9rem;              /* 元素彼此不要黏在一起 */
+  margin: .25rem 0 0;
+  padding: .25rem 0 .25rem;
+}
+.name-list li{
+  background: #fff8e6;           /* 淡淡米黃底 */
+  border: 1px solid #f0e2bf;
+  border-radius: 10px;
+  text-align:center;
+  padding: .5rem .25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  font-weight: 600;
+  color: #7a5a00;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.name-list li:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.08);
+}
+
+/* 卡片之間保留距離（保險） */
+.row.two > .card{ margin-bottom: 16px; }
+
+/* === 倒數卡片：恢復舊版樣式（白色卡片＋大字體） === */
+.hero .countdowns{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;               /* 兩張卡片間距 */
+  margin-top: 12px;
+}
+
+.hero .cd{
+  background: #FFF9E8;
+  border-radius: 16px;
+  padding: 16px 22px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);   /* 舊版的陰影感 */
+  text-align: center;                         /* 內容置中 */
+}
+
+.hero .cd .t{
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.hero .cd .v{
+  font-weight: 800;
+  font-size: 28px;          /* 大字體 */
+  letter-spacing: .5px;
+}
+
+/* 手機：改成一欄 */
+@media (max-width: 768px){
+  .hero .countdowns{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === 幹部介紹：橫長方形（無卡片感） === */
+.staff-profile {
+  display: flex;
+  flex-direction: column;     
+  align-items: center;
+  margin: 2rem auto;         
+  text-align: center;
+  max-width: 900px;           
+}
+
+/* 長方形照片 */
+.staff-profile img.avatar {
+  width: 100%;
+  max-width: 900px;           
+  /* height: 700px; */
+  object-fit: cover;         
+  border-radius: 12px;       
+  margin-bottom: 0.8rem;
+}
+
+/* 名稱＋介紹 */
+.staff-profile .info {
+  width: 100%;
+  max-width: 850px;
+  text-align: left;          
+  margin-top: 0.3rem;
+}
+
+.staff-profile .info h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0.3rem 0;
+  color: #1f2937;
+}
+
+.staff-profile .info p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* 手機版調整 */
+@media (max-width: 768px) {
+  .staff-profile img.avatar {
+    height: 280px;
+    border-radius: 10px;
+  }
+  .staff-profile .info {
+    text-align: center;
+  }
+  .staff-profile .info h4 {
+    font-size: 1.2rem;
+  }
+  .staff-profile .info p {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* === 回憶牆照片尺寸優化 === */
+.slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 860px;     
+  margin: 0 auto;           
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.slideshow img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* 上下留白（避免貼太緊） */
+body.memories main .slideshow {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 手機版維持滿版（比較小所以不縮） */
+@media (max-width: 768px) {
+  .slideshow {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+}
+
+/* ========== Grid Row helpers ========== */
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* 三欄通用 */
+  gap: 16px;                /* 欄與欄間距 */
+  align-items: start;       /* 卡片頂對齊 */
+}
+
+/* 兩欄版（像 Q&A、兩塊卡片等用） */
+.row.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* 小螢幕自動單欄 */
+@media (max-width: 900px) {
+  .row,
+  .row.two {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 讓 row 裡面的 card 不會黏在一起、撐滿高度 */
+.row .card,
+.row.two .card,
+.row .faq-item,
+.row.two .faq-item {
+  height: 100%;
+  margin: 0;              /* 交由 grid gap 控制間距 */
+}
+
+/* ===== 對話泡泡（關於我們） ===== */
+.talk {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  margin: .75rem 0;
+}
+
+.talk .who {
+  font-size: 1.35rem;       /* emoji 當頭像 */
+  line-height: 1;
+  width: 1.6rem;
+  text-align: center;
+  flex: 0 0 1.6rem;
+}
+
+/* 左側（預設）氣泡：藍調 */
+.talk .bubble {
+  padding: .7rem .9rem;
+  border-radius: 12px;
+  border: 1px solid #e0e7ff;
+  background: #f5f7ff;      /* 淡藍底 */
+  box-shadow: 0 6px 14px rgba(0,0,0,.06);
+  max-width: 100%;
+}
+
+/* 右側對話（加 .right）氣泡：橘調 */
+.talk.right {
+  flex-direction: row-reverse;
+}
+.talk.right .bubble {
+  border-color: #ffe0bf;
+  background: #fff7f0;      /* 淡橘底 */
+}
+
+/* 氣泡內的說話者名稱 */
+.talk .bubble .name {
+  display: block;
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: .25rem;
+}
+
+/* 移除氣泡內段落多餘間距（避免看起來「樣式不見」） */
+.talk .bubble p { margin: 0; }
+
+/* ===== #標籤樣式（關於我們底部那排） ===== */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+
+.tag {
+  font-size: .85rem;
+  font-weight: 500;
+  padding: .25rem .7rem;
+  border-radius: 999px;         /* 圓角 */
+  background: #eef2ff;          /* 淡藍背景 */
+  color: #3949ab;               /* 藍色文字 */
+  border: 1px solid #e0e7ff;    /* 淡邊框 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  white-space: nowrap;          /* 避免換行 */
+}
+
+/* 第二種橘色標籤 */
+.tag.orange {
+  background: #fff4e6;
+  color: #a85b00;
+  border-color: #ffe0bf;
+}
+
+/* 手機板微調 */
+@media (max-width: 768px) {
+  .tags {
+    justify-content: center;
+  }
+  .tag {
+    font-size: 0.8rem;
+    padding: .25rem .6rem;
+  }
+}
+
+/* ===== 手機版：回憶牆圖片與按鈕對齊修正 ===== */
+@media (max-width: 768px) {
+  /* 讓舞台本身有固定高度（依螢幕寬度），避免按鈕抓不到中心 */
+  .slideshow {
+    position: relative;
+    height: 56vw;          /* 可調：舞台高度 ≈ 螢幕寬度的 56% */
+    max-height: 70vh;      /* 最多不超過 70% 螢幕高度 */
+  }
+
+  /* 讓圖片填滿舞台，並在舞台中置中，而不是只用 height:auto 靠上 */
+  .slideshow img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;       /* 置中裁切，畫面更好看；若不想裁切可改成 contain */
+    object-position: center;  /* 圖片在舞台中央 */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .6s ease;
+  }
+
+  .slideshow img.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+
+  /* 左右切換鈕永遠鎖在舞台垂直正中央 */
+  .slideshow button {
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    /* 手機上點擊範圍大一點 */
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+  }
+  .slideshow button.prev { left: 8px; }
+  .slideshow button.next { right: 8px; }
+}

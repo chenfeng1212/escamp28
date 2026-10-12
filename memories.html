@@ -1,128 +1,85 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8"/>
-  <title>回憶牆｜工科營</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-  <!-- 站台樣式 -->
-  <link rel="stylesheet" href="./css/common.css"/>
-
-  <!-- Favicon（注意大小寫要和檔名一致） -->
-  <link rel="icon" type="image/png" href="./assets/img/icon.PNG">
-
-  <!--  預先載入首張照片與音樂，縮短首屏等待 -->
-  <link rel="preload" as="image" href="./assets/img/escamp28_p1.JPG">
-  <link rel="preload" as="audio" href="./assets/audio/escamp28_music.MP3">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>回憶牆｜第28屆工程科學營</title>
+  <meta name="description" content="第28屆成大工科營的活動照片回憶牆，可搭配營歌播放。">
+  <meta name="theme-color" content="#FFF9DC">
+  <link rel="icon" type="image/png" href="./assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap">
+  <link rel="stylesheet" href="./css/common.css">
 </head>
 <body class="memories">
-  <canvas id="musicCanvas"></canvas>
+  <canvas id="musicCanvas" aria-hidden="true"></canvas>
   <header id="site-header"></header>
 
-  <main class="container">
-    <section class="card">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <h1 style="margin:0">回憶牆</h1>
-        <button class="btn" id="musicBtn">🎵 播放音樂</button>
-        <!--  用 metadata 暖機；playsinline 防行動裝置強制全螢幕 -->
-        <audio id="bgm" src="./assets/audio/escamp28_music.MP3" preload="metadata" playsinline></audio>
-      </div>
+  <main id="main">
+    <section class="section page-head">
+      <div class="container">
+        <div class="section-head memories-head">
+          <h1 class="label-bar">回憶牆</h1>
+          <p class="note">按下播放，照片會跟著營歌的節奏切換；點照片可以放大。</p>
+          <button type="button" class="btn btn--ink music-btn" id="musicBtn" aria-pressed="false">
+            <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="music-label">播放音樂</span>
+          </button>
+          <audio id="bgm" src="./assets/audio/escamp28_music.MP3" preload="metadata" playsinline></audio>
+        </div>
 
-      <!-- 單張輪播區 -->
-      <div id="slideshow" class="slideshow">
-        <!-- 第一張 -->
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p1.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p1.webp">
-          <img src="./assets/img/escamp28_p1.JPG" alt="活動1" class="active" loading="eager" decoding="async">
-        </picture>
+        <div class="comic gallery">
+          <!-- 換照片：圖片放進 assets/img，並在這裡和下方縮圖列各加一行 -->
+          <div class="stage" id="slideshow" aria-roledescription="輪播" aria-label="活動照片">
+            <img src="./assets/img/photo-p1.webp" alt="第28屆工科營活動照片 1" width="1800" height="1200" decoding="async" class="active" fetchpriority="high">
+            <img src="./assets/img/photo-p2.webp" alt="第28屆工科營活動照片 2" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p3.webp" alt="第28屆工科營活動照片 3" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p4.webp" alt="第28屆工科營活動照片 4" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p5.webp" alt="第28屆工科營活動照片 5" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p6.webp" alt="第28屆工科營活動照片 6" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p7.webp" alt="第28屆工科營活動照片 7" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p8.webp" alt="第28屆工科營活動照片 8" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p9.webp" alt="第28屆工科營活動照片 9" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p10.webp" alt="第28屆工科營活動照片 10" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p11.webp" alt="第28屆工科營活動照片 11" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p12.webp" alt="第28屆工科營活動照片 12" width="1800" height="1200" decoding="async" loading="lazy">
+            <img src="./assets/img/photo-p13.webp" alt="第28屆工科營活動照片 13" width="1800" height="1200" decoding="async" loading="lazy">
+            <button type="button" class="nav-btn prev" aria-label="上一張"><span aria-hidden="true">←</span></button>
+            <button type="button" class="nav-btn next" aria-label="下一張"><span aria-hidden="true">→</span></button>
+            <p class="counter" aria-live="polite"><b id="slideNo">01</b> / <span id="slideTotal">13</span></p>
+          </div>
 
-        <!-- 其餘圖片（lazy 載入） -->
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p2.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p2.webp">
-          <img src="./assets/img/escamp28_p2.JPG" alt="活動2" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p3.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p3.webp">
-          <img src="./assets/img/escamp28_p3.JPG" alt="活動3" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p4.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p4.webp">
-          <img src="./assets/img/escamp28_p4.JPG" alt="活動4" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p5.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p5.webp">
-          <img src="./assets/img/escamp28_p5.JPG" alt="活動5" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p6.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p6.webp">
-          <img src="./assets/img/escamp28_p6.JPG" alt="活動6" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p7.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p7.webp">
-          <img src="./assets/img/escamp28_p7.JPG" alt="活動7" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p8.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p8.webp">
-          <img src="./assets/img/escamp28_p8.JPG" alt="活動8" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p9.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p9.webp">
-          <img src="./assets/img/escamp28_p9.JPG" alt="活動9" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p10.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p10.webp">
-          <img src="./assets/img/escamp28_p10.JPG" alt="活動10" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p11.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p11.webp">
-          <img src="./assets/img/escamp28_p11.JPG" alt="活動11" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p12.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p12.webp">
-          <img src="./assets/img/escamp28_p12.JPG" alt="活動12" loading="lazy" decoding="async">
-        </picture>
-
-        <picture>
-          <source type="image/avif" srcset="./assets/img/escamp28_p13.avif">
-          <source type="image/webp" srcset="./assets/img/escamp28_p13.webp">
-          <img src="./assets/img/escamp28_p13.JPG" alt="活動13" loading="lazy" decoding="async">
-        </picture>
-
-        <!-- 手動切換按鈕 -->
-        <button class="prev">⟨</button>
-        <button class="next">⟩</button>
+          <ol class="filmstrip" aria-label="照片縮圖">
+            <li><button type="button" class="thumb active" data-index="0" aria-label="第 1 張" aria-current="true"><img src="./assets/img/thumb-p1.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="1" aria-label="第 2 張"><img src="./assets/img/thumb-p2.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="2" aria-label="第 3 張"><img src="./assets/img/thumb-p3.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="3" aria-label="第 4 張"><img src="./assets/img/thumb-p4.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="4" aria-label="第 5 張"><img src="./assets/img/thumb-p5.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="5" aria-label="第 6 張"><img src="./assets/img/thumb-p6.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="6" aria-label="第 7 張"><img src="./assets/img/thumb-p7.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="7" aria-label="第 8 張"><img src="./assets/img/thumb-p8.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="8" aria-label="第 9 張"><img src="./assets/img/thumb-p9.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="9" aria-label="第 10 張"><img src="./assets/img/thumb-p10.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="10" aria-label="第 11 張"><img src="./assets/img/thumb-p11.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="11" aria-label="第 12 張"><img src="./assets/img/thumb-p12.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+            <li><button type="button" class="thumb" data-index="12" aria-label="第 13 張"><img src="./assets/img/thumb-p13.webp" alt="" width="320" height="213" loading="lazy"></button></li>
+          </ol>
+        </div>
+        <p class="music-msg" id="musicMsg" role="status"></p>
       </div>
     </section>
   </main>
 
-  <!-- 燈箱（可留可刪） -->
-  <div id="lightbox" class="lightbox"><img id="lightboxImg" alt=""></div>
+  <!-- 燈箱：點照片放大 -->
+  <dialog class="lightbox" id="lightbox" aria-label="照片放大檢視">
+    <img id="lightboxImg" alt="">
+    <button type="button" class="lb-close" id="lightboxClose" aria-label="關閉">×</button>
+  </dialog>
 
   <footer id="site-footer"></footer>
 
-  <!-- ✅ 用 defer，避免阻塞首屏 -->
   <script src="./js/config.js" defer></script>
   <script src="./js/layout.js" defer></script>
   <script src="./js/memories.js" defer></script>
